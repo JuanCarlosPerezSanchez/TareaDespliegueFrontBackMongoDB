@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
+app.use(cors());
 
 // Datos de ejemplo (simulando una base de datos)
 let tareas = [
