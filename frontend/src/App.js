@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import Button from './components/Button';
 import './styles/globals.css';
+import './index.css';
 
 function App() {
   const [tareas, setTareas] = useState([]);
-  const handleDataFetched = (data) => {
-    setTareas(data);
-  };
-  
+
   return (
     <div className="App">
       <h1>Mi Aplicación de Tareas</h1>
-      <Button onDataFetched={handleDataFetched} />
+      <Button onDataFetched={setTareas} />
       {tareas.length > 0 && (
         <table>
           <thead>
