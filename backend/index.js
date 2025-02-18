@@ -24,7 +24,7 @@ const tareaSchema = new mongoose.Schema({
 
 const Tarea = mongoose.model('Tarea', tareaSchema);
 
-app.get('/tareas', async (req, res) => {
+app.get(`${mongoURI}/tareas`, async (req, res) => {
   try {
     const tareas = await Tarea.find();
     res.json(tareas);
@@ -33,7 +33,7 @@ app.get('/tareas', async (req, res) => {
   }
 });
 
-app.post('/tareas', async (req, res) => {
+app.post(`${mongoURI}/tareas`, async (req, res) => {
   const { titulo, descripcion } = req.body;
   if (!titulo || !descripcion) {
     return res.status(400).json({ error: 'Debe poner un titulo y una descripción' });
@@ -47,7 +47,7 @@ app.post('/tareas', async (req, res) => {
   }
 });
 
-app.delete('/tareas/:id', async (req, res) => {
+app.delete(`${mongoURI}/tareas/:id`, async (req, res) => {
   const id = req.params.id;
   try {
     const tareaEliminada = await Tarea.findByIdAndDelete(id);
