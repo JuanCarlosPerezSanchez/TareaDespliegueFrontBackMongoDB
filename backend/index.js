@@ -4,8 +4,13 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3002;
 
+const corsOptions = {
+  origin: 'https://tu-dominio-del-frontend.com', // O '*', para permitir cualquier origen
+  methods: ['GET', 'POST', 'DELETE'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
 
 const mongoURI = 'mongodb+srv://jcpersan:jcpersan@mongodb.nzlep.mongodb.net/';
 
