@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTareas } from '../services/API';
+import { getTareas } from 'https://tareadesplieguefrontbackmongodb.onrender.com';
 
 const Button = ({ onDataFetched }) => {
   const handleClick = async () => {

@@ -1,15 +1,16 @@
-const ApiUrl = 'https://tareadesplieguefrontbackmongodb.onrender.com';
 
-export const getTareas = async () => {
+const apiUrl = 'https://tareadesplieguefrontbackmongodb.onrender.com';
+
+// Función para obtener las tareas
+async function obtenerTareas() {
   try {
-    const response = await fetch(`${ApiUrl}/tareas`);
+    const response = await fetch(`${apiUrl}/tareas`);
     if (!response.ok) {
-      throw new Error('Error al obtener las tareas');
+      throw new Error('No se pudieron obtener las tareas');
     }
-    const data = await response.json();
-    return data;
+    const tareas = await response.json();
+    console.log(tareas);
   } catch (error) {
-    console.error('Error:', error);
-    throw error;
+    console.error('Error al obtener tareas:', error);
   }
-};
+}
