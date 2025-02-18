@@ -1,7 +1,6 @@
 
 const apiUrl = 'https://tareadesplieguefrontbackmongodb.onrender.com';
 
-// Función para obtener las tareas
 async function obtenerTareas() {
   try {
     const response = await fetch(`${apiUrl}/tareas`);
