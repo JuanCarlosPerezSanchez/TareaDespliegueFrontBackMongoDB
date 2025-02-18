@@ -1,66 +1,50 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
-const corsOptions = {
-  origin: 'https://tarea-despliegue-git-8ddc30-juan-carlos-perez-sanchezs-projects.vercel.app',
-  methods: ['GET', 'POST', 'DELETE'],
-};
-
-app.use(cors(corsOptions));
+// Middleware para parsear JSON
 app.use(express.json());
+app.use(cors());
 
-const mongoURI = 'mongodb+srv://jcpersan:jcpersan@mongodb.nzlep.mongodb.net';
+// Datos de ejemplo (simulando una base de datos)
+let tareas = [
+  { id: 1, titulo: 'Hacer la compra', descripcion: 'Comprar leche, pan y huevos' },
+  { id: 2, titulo: 'Estudiar Node.js', descripcion: 'Aprender a crear APIs REST' },
+];
 
-mongoose.connect(mongoURI)
-  .then(() => console.log('Conexión exitosa a MongoDB Atlas'))
-  .catch(err => console.log('Error al conectar a MongoDB Atlas:', err));
-
-const tareaSchema = new mongoose.Schema({
-  titulo: { type: String, required: true },
-  descripcion: { type: String, required: true },
+// Ruta GET /tareas: Devuelve la lista de tareas
+app.get('/tareas', (req, res) => {
+  res.json(tareas);
 });
 
-const Tarea = mongoose.model('Tarea', tareaSchema);
-
-app.get('/tareas', async (req, res) => {
-  try {
-    const tareas = await Tarea.find();
-    res.json(tareas);
-  } catch (err) {
-    res.status(500).json({ error: 'Error al obtener tareas' });
-  }
-});
-
-app.post('/tareas', async (req, res) => {
+// Ruta POST /tareas: Crea una nueva tarea
+app.post('/tareas', (req, res) => {
   const { titulo, descripcion } = req.body;
   if (!titulo || !descripcion) {
     return res.status(400).json({ error: 'Debe poner un titulo y una descripción' });
   }
-  try {
-    const nuevaTarea = new Tarea({ titulo, descripcion });
-    await nuevaTarea.save();
-    res.status(201).json(nuevaTarea);
-  } catch (err) {
-    res.status(500).json({ error: 'Error al crear tarea' });
-  }
+  const nuevaTarea = {
+    id: tareas.length + 1,
+    titulo,
+    descripcion,
+  };
+  tareas.push(nuevaTarea);
+  res.status(201).json(nuevaTarea);
 });
 
-app.delete('/tareas/:id', async (req, res) => {
-  const id = req.params.id;
-  try {
-    const tareaEliminada = await Tarea.findByIdAndDelete(id);
-    if (!tareaEliminada) {
-      return res.status(404).json({ error: 'Tarea no encontrada' });
-    }
-    res.status(204).send();
-  } catch (err) {
-    res.status(500).json({ error: 'Error al eliminar tarea' });
+// Ruta DELETE /tareas/:id: Elimina una tarea por su ID
+app.delete('/tareas/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const tareaIndex = tareas.findIndex((t) => t.id === id);
+  if (tareaIndex === -1) {
+    return res.status(404).json({ error: 'Tarea no encontrada' });
   }
+  tareas.splice(tareaIndex, 1);
+  res.status(204).send();
 });
 
+// Iniciar el servidor
 app.listen(port, () => {
   console.log(`API escuchando en http://localhost:${port}`);
 });
