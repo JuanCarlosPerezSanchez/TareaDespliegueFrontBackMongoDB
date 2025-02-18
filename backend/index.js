@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 const corsOptions = {
   origin: 'https://tarea-despliegue-front-back-mongo-db.vercel.app',
