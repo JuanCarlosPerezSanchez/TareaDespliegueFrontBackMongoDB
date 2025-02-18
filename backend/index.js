@@ -5,15 +5,14 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: 'https://tarea-despliegue-front-back-mongo-db.vercel.app',
+  origin: 'https://tarea-despliegue-front-back-mongo-db.vercel.app', // Asegúrate de que sea el dominio correcto
   methods: ['GET', 'POST', 'DELETE'],
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
 
-const mongoURI = 'mongodb+srv://jcpersan:jcpersan@mongodb.nzlep.mongodb.net';
-
+const mongoURI = 'mongodb+srv://jcpersan:jcpersan@mongodb.nzlep.mongodb.net/';
 mongoose.connect(mongoURI)
   .then(() => console.log('Conexión exitosa a MongoDB Atlas'))
   .catch(err => console.log('Error al conectar a MongoDB Atlas:', err));
