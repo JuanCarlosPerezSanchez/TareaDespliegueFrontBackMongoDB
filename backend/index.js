@@ -10,7 +10,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.static('public'));
 
 const mongoURI = 'mongodb+srv://jcpersan:jcpersan@mongodb.nzlep.mongodb.net/';
 
