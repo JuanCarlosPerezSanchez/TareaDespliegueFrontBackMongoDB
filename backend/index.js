@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 3002;
 
 const corsOptions = {
-  origin: 'https://tarea-despliegue-git-8ddc30-juan-carlos-perez-sanchezs-projects.vercel.app/',
+  origin: 'https://tarea-despliegue-git-8ddc30-juan-carlos-perez-sanchezs-projects.vercel.app',
   methods: ['GET', 'POST', 'DELETE'],
 };
 
