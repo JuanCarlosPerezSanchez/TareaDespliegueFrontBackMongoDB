@@ -7,7 +7,7 @@ const port = process.env.PORT || 3002;
 app.use(express.json());
 app.use(cors());
 
-const mongoURI = 'mongodb+srv://jcpersan:jcpersan@mongodb.nzlep.mongodb.net/?retryWrites=true&w=majority&appName=MongoDB';
+const mongoURI = 'mongodb+srv://<db_username>:<db_password>@mongodb.nzlep.mongodb.net/';
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Conexión exitosa a MongoDB Atlas'))
