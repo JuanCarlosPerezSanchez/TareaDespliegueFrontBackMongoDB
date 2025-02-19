@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <h1>Mi Aplicación de Tareas</h1>
-      <Button onDataFetched={setTareas} />
+      <Button />
       {tareas.length > 0 && (
         <table>
           <thead>

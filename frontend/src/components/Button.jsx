@@ -1,10 +1,11 @@
 import React from 'react';
-import { obtenerTareas } from '../services/API';
+import { getTareas } from 'https://tareadesplieguefrontbackmongodb.onrender.com';
 
-const Button = () => {
+const Button = ({ onDataFetched }) => {
   const handleClick = async () => {
     try {
-      await obtenerTareas();
+      const tareasData = await getTareas();
+      onDataFetched(tareasData);
     } catch (error) {
       console.error('Error al obtener las tareas:', error);
     }
