@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <h1>Aplicación de Tareas</h1>
       <Button setTareas={setTareas} />
-
       {tareas.length > 0 && (
         <table>
           <thead>
