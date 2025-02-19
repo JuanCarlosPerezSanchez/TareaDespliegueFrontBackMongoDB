@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'https://tarea-despliegue-front-back-mongo-db.vercel.app',
+  origin: '*',
   methods: ['GET', 'POST', 'DELETE'],
 };
 
