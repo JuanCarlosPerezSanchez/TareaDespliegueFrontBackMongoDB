@@ -5,7 +5,7 @@ import { obtenerTareas } from '../services/API';
 const Button = ({ setTareas }) => {
   return (
     <button onClick={() => obtenerTareas(setTareas)}>
-      Obtener Tareas
+      Consultar Tareas
     </button>
   );
 };
