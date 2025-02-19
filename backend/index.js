@@ -12,7 +12,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-const mongoURI = 'mongodb+srv://jcpersan:jcpersan@mongodb.nzlep.mongodb.net/';
+const mongoURI = 'mongodb+srv://jcpersan:jcpersan@tareaisrael.nzlep.mongodb.net/';
 mongoose.connect(mongoURI)
   .then(() => console.log('Conexión exitosa a MongoDB Atlas'))
   .catch(err => console.log('Error al conectar a MongoDB Atlas:', err));
