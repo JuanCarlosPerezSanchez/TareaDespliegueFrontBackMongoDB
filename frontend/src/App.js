@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Aplicación de Tareas</h1>
+      <h1>Ten siempre tus tareas organizadas!!!</h1>
       <Button setTareas={setTareas} />
       {tareas.length > 0 && (
         <table>
