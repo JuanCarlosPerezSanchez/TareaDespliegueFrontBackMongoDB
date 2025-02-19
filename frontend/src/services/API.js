@@ -1,15 +1,14 @@
 
 const apiUrl = 'https://tareadesplieguefrontbackmongodb.onrender.com';
 
-async function obtenerTareas() {
+async function obtenerTareas(setTareas) {
   try {
     const response = await fetch(`${apiUrl}/tareas`);
-    if (!response.ok) {
-      throw new Error('No se pudieron obtener las tareas');
-    }
-    const tareas = await response.json();
-    console.log(tareas);
+    const data = await response.json();
+    setTareas(data); // ✅ Guarda las tareas en el estado
   } catch (error) {
-    console.error('Error al obtener tareas:', error);
+    console.error("Error al obtener los datos:", error);
   }
 }
+
+export { obtenerTareas };

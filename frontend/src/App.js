@@ -8,8 +8,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Mi Aplicación de Tareas</h1>
-      <Button />
+      <h1>Aplicación de Tareas</h1>
+      <Button setTareas={setTareas} />
+
       {tareas.length > 0 && (
         <table>
           <thead>
@@ -21,8 +22,8 @@ function App() {
           </thead>
           <tbody>
             {tareas.map((tarea) => (
-              <tr key={tarea.id}>
-                <td>{tarea.id}</td>
+              <tr key={tarea._id}>
+                <td>{tarea._id}</td>
                 <td>{tarea.titulo}</td>
                 <td>{tarea.descripcion}</td>
               </tr>
